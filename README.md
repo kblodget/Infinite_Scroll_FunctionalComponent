@@ -1,2 +1,2 @@
-# InfiniteScroll_not
+# InfiniteScroll_FunctionalXComponent Example
 Created with CodeSandbox
