@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { loremIpsum } from "lorem-ipsum";
 import Collapsible from "react-collapsible";
@@ -9,9 +9,9 @@ const rowCount = 1000;
 
 //class App extends Component {
 const App = () => {
-  //constructor() {
-  //  super();
-  //  this.renderRow = this.renderRow.bind(this);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
   const list = Array(rowCount)
     .fill()
     .map((val, idx) => {
@@ -48,6 +48,7 @@ const App = () => {
       </div>
     );
   };
+  const handleInfiniteOnLoad = () => {};
 
   return (
     <div className="App">
@@ -55,8 +56,17 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Details List</h1>
       </header>
-      <div className="list">{list.map(renderRow)}</div>
+      <InfiniteScroll
+        initialLoad={false}
+        pageStart={0}
+        loadMore={handleInfiniteOnLoad}
+        hasMore={!loading && hasMore}
+        useWindow={false}
+      >
+        <div className="list">{list.map(renderRow)}</div>
+      </InfiniteScroll>
     </div>
   );
 };
 export default App;
+
