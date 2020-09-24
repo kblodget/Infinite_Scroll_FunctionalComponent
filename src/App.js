@@ -18,7 +18,7 @@ const App = () => {
       return {
         id: idx,
         name: "John Doe",
-        image: "http://via.placeholder.com/40",
+        image: "https://via.placeholder.com/10/FFFF00/FFFF00",
         text: loremIpsum({
           count: 1,
           units: "sentences",
